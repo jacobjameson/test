@@ -1,0 +1,28 @@
+{
+    "id": "4FEC8801",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1707173633279.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "id": "01ad2e3117fd4e6facaf7d6347970b0e",
+        "name": "test_shuffled",
+        "title": "test_shuffled",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 0,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1707173633279,
+    "read_only": false,
+    "read_only_alternatives": []
+}

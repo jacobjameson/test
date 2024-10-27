@@ -1,0 +1,145 @@
+---
+title: "Problem Set 1"
+subtitle: "Surrogate Outcomes"
+output: pdf_document
+date: "Due Wednesday January 31, 12:00 pm"
+author: Jacob Jameson (worked with Andrea Luviano)
+---
+
+
+## Question 1
+
+Does the observed value of $S_i$ in Population A satisfy the statistical surrogacy criteria shown above? What about Population B?
+
+\color{blue}
+
+
+We need to check whether the surrogate \( S_i \) satisfies the condition for statistical surrogacy:
+
+\[ P(Y_i | T_i = 1, S_i = s) = P(Y_i | T_i = 0, S_i = s) \]
+
+Population A:
+
+- For individuals with low scores irrespective of treatment (\( S_i(0) = \text{Low} \), \( S_i(1) = \text{Low} \)), the income outcome is consistent (\( Y_i(0) = Y_i(1) = 30 \)), satisfying the surrogacy criteria.
+
+- For individuals with scores that improve with treatment (\( S_i(0) = \text{Low} \), \( S_i(1) = \text{High} \)), the income outcome changes from 20 to 50, violating the surrogacy criteria.
+
+- For individuals with high scores irrespective of treatment (\( S_i(0) = \text{High} \), \( S_i(1) = \text{High} \)), the income outcome decreases with treatment (\( Y_i(0) = 50 \), \( Y_i(1) = 40 \)), which also violates the surrogacy criteria.
+
+- For individuals whose scores deteriorate with treatment (\( S_i(0) = \text{High} \), \( S_i(1) = \text{Low} \)), the income outcome decreases (\( Y_i(0) = 40 \), \( Y_i(1) = 20 \)), again violating the surrogacy criteria.
+
+
+The surrogate \( S_i \) in Population A does not consistently satisfy the statistical surrogacy criteria as the potential outcomes \( Y_i \) are not independent of treatment \( T_i \), given the surrogate \( S_i \), for all groups. 
+
+
+Population B:
+
+- For individuals with consistently low scores (\( S_i(0) = \text{Low} \), \( S_i(1) = \text{Low} \)), the income outcome is unchanged (\( Y_i(0) = Y_i(1) = 30 \)), meeting the surrogacy criteria.
+    
+- For individuals with improved scores due to treatment (\( S_i(0) = \text{Low} \), \( S_i(1) = \text{High} \)), the income outcome varies (\( Y_i(0) = 30 \), \( Y_i(1) = 40 \)), not meeting the surrogacy criteria.
+    
+- For individuals with consistently high scores (\( S_i(0) = \text{High} \), \( S_i(1) = \text{High} \)), the income outcome is consistent (\( Y_i(0) = Y_i(1) = 50 \)), satisfying the surrogacy criteria.
+    
+- For individuals whose scores worsen with treatment (\( S_i(0) = \text{High} \), \( S_i(1) = \text{Low} \)), the income outcome is dependent on the treatment (\( Y_i(0) = 40 \), \( Y_i(1) = 20 \)), violating the surrogacy criteria.
+
+
+Population B does not uniformly satisfy the statistical surrogacy criteria, as the potential outcomes \( Y_i \) are not independent of treatment \( T_i \), given the surrogate \( S_i \), for all subgroups. 
+
+
+
+\color{black}
+
+
+## Question 2
+
+As an alternative to statistical surrogate, we can define the following principal surrogate criteria using principal stratification,
+
+\[P(Y_i(1) | S_i(0) = S_i(1) = s) = P(Y_i(0) | S_i(0) = S_i(1) = s)\]
+
+for any $s$. Does Population A satisfy this alternative criteria? What about Population B?
+
+\color{blue}
+
+Population A:
+
+- For \( S_i(0) = S_i(1) = \text{Low} \), \( Y_i(0) = Y_i(1) = 30 \), satisfying the criteria.
+
+- For \( S_i(0) = S_i(1) = \text{High} \), \( Y_i(0) \neq Y_i(1) \) (50 vs. 40), not satisfying the criteria.
+
+Population B:
+
+- For \( S_i(0) = S_i(1) = \text{Low} \), \( Y_i(0) = Y_i(1) = 30 \), satisfying the criteria.
+
+- For \( S_i(0) = S_i(1) = \text{High} \), \( Y_i(0) = Y_i(1) = 50 \), satisfying the criteria.
+
+
+Population A does not satisfy the principal surrogate criteria across all subgroups, while Population B does satisfy the criteria for the subgroups where \( S_i(0) = S_i(1) \).
+
+\color{black}
+
+## Question 3
+
+What are the key differences between statistical and principal surrogate criteria? Does one imply the other?
+
+\color{blue}
+Statistical Surrogate Criteria assess whether the surrogate outcome can capture the entire effect of the treatment on the final outcome. It requires the outcome distribution to be the same for treated and untreated groups, given the surrogate outcome. Principal Surrogate Criteria use principal stratification to focus on individuals whose surrogate outcome is not affected by the treatment. It assesses whether the potential outcome is the same in the absence of treatment as it is in the presence of treatment, but only for those individuals.
+
+One does not imply the other because statistical surrogacy can exist even when the surrogate is not a principal surrogate (the surrogate outcome may change with treatment but still predict the final outcome). 
+
+\color{black}
+
+
+## Question 4
+
+Using the data from Population B, compute the average treatment effect among those who have the low score, i.e., $E(Y_i(1) - Y_i(0) | S_i = 0)$, and compare it with that of those who have the high score, i.e., $E(Y_i(1) - Y_i(0) | S_i = 1)$. What does this say about the relationship between the surrogate and average treatment effect?
+
+
+\color{blue}
+
+For individuals with low surrogate scores (\(S_i=0\)) and high surrogate scores (\(S_i=1\)), the ATE is calculated as follows:
+
+\textbf{For low scores (\(S_i=0\)):}
+\begin{align*}
+E(Y_i(1) - Y_i(0) | S_i = 0) &= \frac{0.1 \times (40 - 30) + 0.2 \times (30 - 30)}{0.1 + 0.2} \\
+                             &= \frac{0.1 \times 10}{0.3} \\
+                             &= \frac{1}{3} \times 10 \\
+                             &= 3.33
+\end{align*}
+
+\textbf{For high scores (\(S_i=1\)):}
+\begin{align*}
+E(Y_i(1) - Y_i(0) | S_i = 1) &= \frac{0.1 \times (50 - 50) + 0.1 \times (20 - 40)}{0.1 + 0.1} \\
+                             &= \frac{0.1 \times 0 + 0.1\times (-20)}{0.2} \\
+                             &= \frac{-2}{0.2} \\
+                             &= -10
+\end{align*}
+
+The ATE among individuals with low scores is positive, indicating a beneficial effect of treatment, while the ATE for those with high scores is negative, indicating a detrimental effect. This demonstrates that the surrogate score is indicative of the heterogeneous treatment effects.
+
+\color{black}
+
+## Question 5
+
+
+Using the data from Population B, compute the average treatment effect for each principal stratum, i.e., $E(Y_i(1) - Y_i(0) | S_i(1) = s_1, S_i(0) = s0)$ for $s_0, s_1 \in \{0, 1\}$, and compare them with one another. What does this result say about the relationship between the surrogate and treatment effect? How and why does your conclusion differ from the conclusion you obtained in the previous question?
+
+\color{blue}
+
+The ATE for each principal stratum is computed as follows, where \( s_0 \) and \( s_1 \) represent the surrogate score without and with treatment, respectively:
+
+\textbf{Low to Low ( \( s_0 = 0, s_1 = 0 \) ):}
+\[ E(Y_i(1) - Y_i(0) | S_i(1) = 0, S_i(0) = 0) = 30 - 30 = 0 \]
+
+\textbf{Low to High ( \( s_0 = 0, s_1 = 1 \) ):}
+\[ E(Y_i(1) - Y_i(0) | S_i(1) = 1, S_i(0) = 0) = 40 - 30 = 10 \]
+
+\textbf{High to High ( \( s_0 = 1, s_1 = 1 \) ):}
+\[ E(Y_i(1) - Y_i(0) | S_i(1) = 1, S_i(0) = 1) = 50 - 50 = 0 \]
+
+\textbf{High to Low ( \( s_0 = 1, s_1 = 0 \) ):}
+\[ E(Y_i(1) - Y_i(0) | S_i(1) = 0, S_i(0) = 1) = 20 - 40 = -20 \]
+
+Comparing these effects:
+
+The ATE is positive for the Low to High group, indicating a beneficial treatment effect for those whose surrogate score improves. However, the ATE is negative for the High to Low group, suggesting a detrimental treatment effect for those whose surrogate score worsens. This result implies that the treatment effect is dependent on the change in the surrogate score. This differs from the previous question as it highlights the importance of the change in surrogate score, rather than the initial surrogate score alone, in determining the treatment effect.
+
